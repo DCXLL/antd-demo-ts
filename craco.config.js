@@ -10,7 +10,7 @@ module.exports = {
             plugin: CracoAntDesignPlugin,
             options: {
                 customizeTheme: {
-                    '@primary-color': '#1DA57A',
+                    // '@primary-color': '#1DA57A',
                 },
             },
         },
@@ -30,7 +30,7 @@ module.exports = {
             options: {
                 lessLoaderOptions: {
                     lessOptions: {
-                        modifyVars: { '@primary-color': '#1DA57A' },
+                        // modifyVars: { '@primary-color': '#1DA57A' },
                         javascriptEnabled: true,
                         module: true,
                     },

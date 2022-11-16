@@ -36,6 +36,12 @@ module.exports = {
         },
         plugins: [new WebpackBar()],
     },
+/* tsconfig.json */
+  "compilerOptions": {
+    "paths":{
+        "@/*":["./src/*"]
+    }
+  },
 ```
 
 ### 4.配置 less 模块化
