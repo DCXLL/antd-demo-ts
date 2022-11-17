@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Space } from 'antd';
+import React, { useEffect } from 'react';
 const HookUseState = () => {
-    const [loginUser, setLoginUser] = useState({});
-    const handle = () => {
-        setLoginUser({});
-    };
-    
-    useEffect (() => {
-
-    })
+    useEffect(() => {
+        console.log('useEffect 无参数 执行次数');
+    });
+    useEffect(() => {
+        console.log('useEffect 空数组参数 执行次数');
+    }, [])
     return (
-        <>
-            <h3>1. usestate</h3>
-            <Space>
-                <Button
-                    type="primary"
-                    onClick={() => {
-                        handle();
-                    }}
-                >
-                    获取当前登录信息
-                </Button>
-              
-            </Space>
-        </>
+        <div className="section">
+            <h3>2. useEffect</h3>
+        </div>
     );
 };
 export default HookUseState;

@@ -1,21 +1,16 @@
-import React, { useState } from 'react';
 import './App.less';
-import { ArticleTitle, HookUseState } from '@/components/index';
-import { Button, } from 'antd';
+import { ArticleTitle, HookUseState, HookUseEffect } from '@/components/index';
+import { useState } from 'react';
+import { Button } from 'antd';
 
 function App() {
-    const [isHookUseState, setIsHookUseState] = useState(true);
+    const [count, setCount] = useState(1);
     return (
         <>
             <ArticleTitle />
-            <div className="section-useState">
-                <div>{isHookUseState && <HookUseState />}</div>
-                <div className='marT10'>
-                    <Button onClick={() => setIsHookUseState(!isHookUseState)}>
-                        {isHookUseState ? 'hide' : 'show'} useState
-                    </Button>
-                </div>
-            </div>
+            <HookUseState />
+            <HookUseEffect />
+            <Button onClick={() => {setCount(count + 1)}}>父组件渲染次数{count}</Button>
         </>
     );
 }

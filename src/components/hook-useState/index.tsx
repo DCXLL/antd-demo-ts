@@ -5,9 +5,9 @@ const HookUseState = () => {
     const handle = (temp: number) => {
         setCount(count + temp);
     };
-    console.log('HookUseState')
+
     return (
-        <>
+        <div className="section">
             <h3>1. useState</h3>
             <Space>
                 <Button
@@ -28,7 +28,7 @@ const HookUseState = () => {
                     -
                 </Button>
             </Space>
-        </>
+        </div>
     );
 };
 export default HookUseState;
