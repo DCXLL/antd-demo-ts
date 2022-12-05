@@ -1,16 +1,39 @@
 import './App.less';
 import { ArticleTitle, HookUseState, HookUseEffect } from '@/components/index';
 import { useState } from 'react';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
 
 function App() {
     const [count, setCount] = useState(1);
+    const [showHookUseEffect, setShowHookUseEffect] = useState(true);
     return (
         <>
             <ArticleTitle />
             <HookUseState />
-            <HookUseEffect />
-            <Button onClick={() => {setCount(count + 1)}}>父组件渲染次数{count}</Button>
+            {showHookUseEffect && <HookUseEffect />}
+            <Space>
+                <Button
+                    onClick={() => {
+                        setShowHookUseEffect(true);
+                    }}
+                >
+                    加载HookUseEffect
+                </Button>
+                <Button
+                    onClick={() => {
+                        setShowHookUseEffect(false);
+                    }}
+                >
+                    卸载HookUseEffect
+                </Button>
+                <Button
+                    onClick={() => {
+                        setCount(count + 1);
+                    }}
+                >
+                    HookUseEffect渲染次数{count}
+                </Button>
+            </Space>
         </>
     );
 }
