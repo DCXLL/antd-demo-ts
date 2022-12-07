@@ -7,6 +7,10 @@ const Card = ({ text, changePosition, id, index }: any) => {
     const ref = useRef(null);
     const [, drop] = useDrop({
         accept: 'DragDropBox',
+        // options:{},
+        canDrop:(item, monitor) => {
+            return false
+        },
         hover: (item: any, monitor) => {
             if (!ref.current) return;
             let dragIndex = item.index;
@@ -18,21 +22,29 @@ const Card = ({ text, changePosition, id, index }: any) => {
         drop: (item, monitor) => {},
     });
 
-    const [{ isDragging }, drag] = useDrag({
+    const [{ isDragging }, drag, DragPreview] = useDrag({
         type: 'DragDropBox',
         item: { id, index },
-        end: () => {},
-        isDragging: (monitor) => {
-            return index === monitor.getItem().index;
+        // previewOptions:{},
+        // options:{},
+        // end: () => {},
+        // canDrag:() => {
+        //     return true
+        // },
+        // isDragging:() => {
+        //     return true
+        // },
+        collect: (monitor) => {
+            return {
+                isDragging: monitor.isDragging(),
+            };
         },
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
-        }),
     });
     return (
         <div
             className={classNames(styles.cardbox, styles[`color${id}`])}
             ref={drag(drop(ref)) as any}
+            // ref={isDragging ? drag : DragPreview}
             style={{ opacity: isDragging ? 0.3 : 1 }}
         >
             {text}
@@ -40,3 +52,4 @@ const Card = ({ text, changePosition, id, index }: any) => {
     );
 };
 export default Card;
+// Board ==》 DndProvider ==》 Knight ==》
