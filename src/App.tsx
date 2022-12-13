@@ -1,5 +1,11 @@
 import './App.less';
-import { ArticleTitle, HookUseState, HookUseEffect,ReactDnD } from '@/components/index';
+import {
+    ArticleTitle,
+    HookUseState,
+    HookUseEffect,
+    ReactDnD,
+    AntdTable,
+} from '@/components/index';
 import { useState } from 'react';
 import { Button, Space } from 'antd';
 
@@ -34,7 +40,8 @@ function App() {
                     HookUseEffect渲染次数{count}
                 </Button>
             </Space>
-            <ReactDnD/>
+            <ReactDnD />
+            <AntdTable />
         </>
     );
 }
