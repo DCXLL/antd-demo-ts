@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, Space } from 'antd';
+const Child = React.memo(({ count, cb }: any) => {
+    console.log('Child子组件渲染次数');
+    return <div onClick={cb}>useMemo缓存count,当前count:{count}</div>;
+});
 const HookUseState = () => {
     const [count, setCount] = useState(0);
+
     const handle = (temp: number) => {
         setCount(count + temp);
     };
+    
+    const VV = useMemo(() => {
+        return count;
+    }, []); // 存的是值
+
+    const FF = useCallback(() => {
+        console.log(`useCallback缓存count,当前count:${count}`);
+    }, []); // 存的是函数
 
     return (
         <div className="section">
@@ -26,6 +39,9 @@ const HookUseState = () => {
                     }}
                 >
                     -
+                </Button>
+                <Button type="primary">
+                    <Child count={VV} cb={FF} />
                 </Button>
             </Space>
         </div>

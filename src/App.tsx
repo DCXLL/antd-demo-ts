@@ -4,7 +4,7 @@ import {
     HookUseState,
     HookUseEffect,
     ReactDnD,
-    AntdTable,
+    // AntdTable,
 } from '@/components/index';
 import { useState } from 'react';
 import { Button, Space } from 'antd';
@@ -41,7 +41,7 @@ function App() {
                 </Button>
             </Space>
             <ReactDnD />
-            <AntdTable />
+            {/* <AntdTable /> */}
         </>
     );
 }
