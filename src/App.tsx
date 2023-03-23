@@ -8,13 +8,17 @@ import {
 } from '@/components/index';
 import { useState } from 'react';
 import { Button, Space } from 'antd';
-
+import { UserBaseInfo } from './context/userInfo';
 function App() {
     const [count, setCount] = useState(1);
     const [showHookUseEffect, setShowHookUseEffect] = useState(true);
+    const [userInfo, setUserInfo] = useState({'username':'游客'});
+
     return (
+        <UserBaseInfo.Provider value={userInfo}>
         <>
             <ArticleTitle />
+            {/* <Button onClick={() => setUserInfo({'username':'王德磊'})}>切换用户</Button>   */}
             <HookUseState />
             {showHookUseEffect && <HookUseEffect />}
             <Space>
@@ -42,7 +46,8 @@ function App() {
             </Space>
             <ReactDnD />
             {/* <AntdTable /> */}
-        </>
+            </>
+        </UserBaseInfo.Provider>
     );
 }
 
